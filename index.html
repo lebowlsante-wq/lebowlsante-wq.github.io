@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Bowl Santé — Menu &amp; Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F6EFE1;
+    --paper: #FFFDF8;
+    --forest: #24301A;
+    --olive: #5B6B3B;
+    --olive-soft: #93A06C;
+    --rust: #C1521F;
+    --gold: #D9A441;
+    --ink: #2C2418;
+    --line: rgba(44,36,24,0.14);
+    --veg: #3C7A3C;
+    --nonveg: #B5372A;
+    --radius: 18px;
+    --wrap: 1160px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--wrap); margin:0 auto; padding:0 28px;}
+
+  h1,h2,h3{font-family:'Fraunces', serif; color:var(--forest); margin:0; letter-spacing:-0.01em;}
+  .script{font-family:'Caveat', cursive; color:var(--rust); font-weight:700;}
+
+  .ring{
+    position:relative;
+    display:inline-block;
+  }
+  .ring::after{
+    content:"";
+    position:absolute;
+    inset:-0.14em -0.05em;
+    border:3px solid var(--rust);
+    border-radius:52% 48% 55% 45% / 48% 55% 45% 52%;
+    opacity:0.55;
+    z-index:-1;
+    transform:rotate(-6deg);
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,239,225,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .brand img{width:44px; height:44px; border-radius:50%; object-fit:cover; border:1.5px solid var(--olive-soft);}
+  .brand-name{font-family:'Fraunces', serif; font-weight:700; font-size:1.15rem; color:var(--forest); line-height:1;}
+  .brand-name .script{font-size:1.3rem; display:block; margin-top:1px;}
+  .nav-links{display:flex; align-items:center; gap:30px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    text-decoration:none; font-weight:600; font-size:0.92rem; color:var(--forest);
+    position:relative; padding-bottom:3px;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--rust);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--forest); color:var(--cream)!important; padding:9px 18px; border-radius:30px;
+    font-size:0.88rem; font-weight:600; text-decoration:none;
+  }
+  .nav-cta::after{display:none;}
+  .nav-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 40px;}
+  .hero .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:52px; align-items:center;
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:0.18em; font-size:0.76rem; font-weight:700;
+    color:var(--olive); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--olive);}
+  .hero h1{font-size:clamp(2.6rem, 5vw, 4rem); font-weight:600; line-height:1.02;}
+  .hero h1 em{font-style:normal; color:var(--rust);}
+  .hero .script.big{font-size:clamp(2.8rem,6vw,4.6rem); display:block; margin-top:-6px;}
+  .hero p.lede{margin:22px 0 30px; max-width:46ch; font-size:1.08rem; color:#4a4230;}
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:32px;
+    font-weight:600; font-size:0.95rem; text-decoration:none; border:1.5px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--rust); color:#fff;}
+  .btn-primary:hover{background:#a8461a;}
+  .btn-outline{border-color:var(--forest); color:var(--forest); background:transparent;}
+  .btn-outline:hover{background:var(--forest); color:var(--cream);}
+
+  .hero-visual{position:relative;}
+  .hero-visual::before{
+    content:"";
+    position:absolute; inset:-6% -6%;
+    background:radial-gradient(circle at 60% 40%, var(--olive-soft) 0%, transparent 68%);
+    opacity:0.35; z-index:0; border-radius:50%;
+  }
+  .hero-visual img{
+    position:relative; z-index:1; border-radius:26px; box-shadow:0 30px 60px -20px rgba(36,48,26,0.35);
+  }
+
+  .strip{
+    background:var(--forest); color:var(--cream); overflow:hidden; padding:14px 0; margin-top:56px;
+  }
+  .strip-track{display:flex; gap:48px; white-space:nowrap; animation:scroll 26s linear infinite; width:max-content;}
+  .strip span{font-family:'Fraunces', serif; font-size:0.95rem; letter-spacing:0.04em; display:flex; align-items:center; gap:48px;}
+  .strip .dot{color:var(--gold);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .strip-track{animation:none;} }
+
+  /* ---------- Section shell ---------- */
+  section{padding:84px 0;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 48px;}
+  .section-head .eyebrow{justify-content:center;}
+  .section-head .eyebrow::before{display:none;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.7rem); font-weight:600;}
+  .section-head p{color:#5a5240; margin-top:12px;}
+
+  /* ---------- Menu ---------- */
+  #menu{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .tabs{
+    display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:48px;
+  }
+  .tab-btn{
+    background:transparent; border:1.5px solid var(--line); color:var(--forest); font-family:'Work Sans';
+    font-weight:600; font-size:0.86rem; padding:10px 20px; border-radius:24px; cursor:pointer;
+    transition:all .2s ease;
+  }
+  .tab-btn:hover{border-color:var(--olive);}
+  .tab-btn.active{background:var(--forest); border-color:var(--forest); color:var(--cream);}
+
+  .menu-panel{display:none;}
+  .menu-panel.active{display:block; animation:fade .35s ease;}
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .menu-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 48px;}
+  .dish{
+    display:flex; justify-content:space-between; gap:18px; padding:22px 0; border-bottom:1px dashed var(--line);
+  }
+  .dish-info{display:flex; gap:12px;}
+  .tag{
+    width:13px; height:13px; border:2px solid var(--veg); border-radius:3px; margin-top:5px; flex:none; position:relative;
+  }
+  .tag::after{content:""; position:absolute; inset:2.5px; background:var(--veg); border-radius:1px;}
+  .tag.nonveg{border-color:var(--nonveg);}
+  .tag.nonveg::after{background:var(--nonveg);}
+  .dish-name{font-family:'Fraunces', serif; font-weight:600; font-size:1.08rem; color:var(--forest);}
+  .dish-desc{font-size:0.87rem; color:#6b634e; margin-top:4px; max-width:36ch;}
+  .dish-price{font-family:'Fraunces', serif; font-weight:600; color:var(--rust); white-space:nowrap; font-size:1.02rem;}
+  .dish-price small{display:block; font-family:'Work Sans'; font-weight:500; font-size:0.68rem; color:#8a8168; text-align:right;}
+
+  .legend{display:flex; gap:22px; justify-content:center; margin-top:40px; font-size:0.82rem; color:#6b634e;}
+  .legend span{display:flex; align-items:center; gap:8px;}
+
+  /* ---------- Combos ---------- */
+  #combos .wrap > .section-head{margin-bottom:40px;}
+  .combo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .combo-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+    position:relative; overflow:hidden;
+  }
+  .combo-card .leaf{
+    width:38px; height:38px; border-radius:50%; background:var(--olive-soft); opacity:0.25;
+    position:absolute; top:16px; right:16px;
+  }
+  .combo-card h3{font-size:1.12rem; font-weight:600; margin-bottom:10px; padding-right:30px;}
+  .combo-card p{font-size:0.88rem; color:#6b634e; margin:0 0 16px;}
+  .combo-price{
+    display:inline-block; font-family:'Fraunces', serif; font-weight:700; color:var(--rust);
+    border:1.5px dashed var(--rust); padding:6px 14px; border-radius:20px; font-size:0.92rem;
+  }
+
+  /* ---------- Contact ---------- */
+  #contact{background:var(--forest); color:var(--cream);}
+  #contact .section-head h2{color:var(--cream);}
+  #contact .section-head p{color:var(--olive-soft);}
+  #contact .section-head .eyebrow{color:var(--gold);}
+  .contact-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:52px; align-items:start;}
+  .info-card{background:rgba(255,253,248,0.06); border:1px solid rgba(255,253,248,0.16); border-radius:var(--radius); padding:32px;}
+  .info-row{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(255,253,248,0.12);}
+  .info-row:last-child{border-bottom:none;}
+  .info-row .ic{
+    width:38px; height:38px; border-radius:50%; background:rgba(217,164,65,0.16); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; flex:none; font-size:1.05rem;
+  }
+  .info-row h4{margin:0 0 3px; font-family:'Fraunces', serif; font-size:0.98rem; font-weight:600; color:var(--cream);}
+  .info-row p{margin:0; font-size:0.88rem; color:#C9CDBA;}
+  .socials{display:flex; gap:12px; margin-top:24px;}
+  .socials a{
+    width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,253,248,0.3);
+    display:flex; align-items:center; justify-content:center; text-decoration:none; color:var(--cream); font-size:0.85rem;
+  }
+
+  .form-card{background:var(--paper); border-radius:var(--radius); padding:36px; color:var(--ink);}
+  .form-card h3{font-size:1.3rem; margin-bottom:6px;}
+  .form-card > p{color:#6b634e; font-size:0.9rem; margin:0 0 26px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-size:0.8rem; font-weight:600; color:var(--forest); margin-bottom:6px;}
+  .field input, .field textarea, .field select{
+    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:12px 14px; font-family:'Work Sans';
+    font-size:0.94rem; background:#fff; color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{
+    outline:none; border-color:var(--rust);
+  }
+  .field textarea{resize:vertical; min-height:100px;}
+  .form-note{font-size:0.78rem; color:#8a8168; margin-top:4px;}
+  .form-status{font-size:0.88rem; margin-top:14px; display:none;}
+  .form-status.show{display:block;}
+  .form-status.ok{color:var(--veg);}
+
+  footer{background:#1c2412; color:#9aa085; padding:32px 0; font-size:0.82rem;}
+  .foot-wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{order:-1; max-width:340px; margin:0 auto;}
+    .menu-grid{grid-template-columns:1fr;}
+    .combo-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .nav-links{position:fixed; top:74px; left:0; right:0; background:var(--cream); flex-direction:column;
+      align-items:flex-start; padding:20px 28px; border-bottom:1px solid var(--line); display:none; gap:16px;}
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--forest);}
+  }
+  @media (max-width: 560px){
+    .combo-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .tabs{gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <img src="Logo.jpg" alt="Le Bowl Santé logo">
+      <span class="brand-name">Le Bowl<span class="script">Santé</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#combos">Combos</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Protein Salads &amp; Drinks</div>
+        <h1>Nourish. Energize.<br><em class="ring">Balance.</em></h1>
+        <span class="script big">Le Bowl Santé</span>
+        <p class="lede">Clean ingredients, real results. Fresh bowls, crafted sandwiches, oven-baked flatbread and cold-pressed blends — made freshly, eaten well.</p>
+        <div class="hero-ctas">
+          <a href="#menu" class="btn btn-primary">View the menu</a>
+          <a href="#contact" class="btn btn-outline">Visit us</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="Paneer vitality bowl and green smoothie.jpg" alt="Paneer vitality bowl and green smoothie">
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="strip-track">
+      <span>Nourish <span class="dot">•</span> Energize <span class="dot">•</span> Balance <span class="dot">•</span> Good food, better mood <span class="dot">•</span> Eat well, live well <span class="dot">•</span></span>
+      <span>Nourish <span class="dot">•</span> Energize <span class="dot">•</span> Balance <span class="dot">•</span> Good food, better mood <span class="dot">•</span> Eat well, live well <span class="dot">•</span></span>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">The Menu</div>
+        <h2>Fresh bowls, <span class="script">real</span> nourishment</h2>
+        <p>Made fresh daily with clean ingredients — pick your category below.</p>
+      </div>
+
+      <div class="tabs" id="tabs">
+        <button class="tab-btn active" data-tab="salata">Herba Salata</button>
+        <button class="tab-btn" data-tab="breads">Between Breads</button>
+        <button class="tab-btn" data-tab="flatbread">Oven-Baked Flatbread</button>
+        <button class="tab-btn" data-tab="beverages">Beverages</button>
+        <button class="tab-btn" data-tab="quenchers">Thirst Quenchers</button>
+        <button class="tab-btn" data-tab="blends">Santé Blends</button>
+      </div>
+
+      <!-- Herba Salata -->
+      <div class="menu-panel active" id="salata">
+        <div class="menu-grid">
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Vegan Vitality Bowl</div>
+                <div class="dish-desc">Tofu, onion, tomatoes, greens, seasoning, olive oil, lemon juice</div>
+              </div>
+            </div>
+            <div class="dish-price">₹260<small>Large ₹320</small></div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Mushroom Grove Bowl</div>
+                <div class="dish-desc">Mushroom, soya chunks, cucumber, honey, sesame seeds</div>
+              </div>
+            </div>
+            <div class="dish-price">₹280<small>Large ₹340</small></div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Paneer Vitality Bowl</div>
+                <div class="dish-desc">Paneer, onion, tomatoes, greens, seasoning, olive oil, lemon juice</div>
+              </div>
+            </div>
+            <div class="dish-price">₹290<small>Large ₹350</small></div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag nonveg"></span>
+              <div>
+                <div class="dish-name">Sunny Side Bowl</div>
+                <div class="dish-desc">Eggs, greek yogurt, yellow mustard, avocado, greens, whole wheat toast</div>
+              </div>
+            </div>
+            <div class="dish-price">₹290<small>Large ₹350</small></div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag nonveg"></span>
+              <div>
+                <div class="dish-name">Chicken Garden Bowl</div>
+                <div class="dish-desc">Chicken, celery, walnut, cranberries, yellow mustard, olive oil, lemon juice</div>
+              </div>
+            </div>
+            <div class="dish-price">₹300<small>Large ₹360</small></div>
+          </div>
+        </div>
+
+        <div style="margin-top:36px; padding-top:28px; border-top:1px solid var(--line);">
+          <h3 style="font-size:1.05rem; margin-bottom:16px; text-align:center;">Add-ons</h3>
+          <div class="menu-grid">
+            <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Tofu</div></div></div><div class="dish-price">₹90</div></div>
+            <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Paneer</div></div></div><div class="dish-price">₹80</div></div>
+            <div class="dish"><div class="dish-info"><span class="tag nonveg"></span><div><div class="dish-name">Egg</div></div></div><div class="dish-price">₹60</div></div>
+            <div class="dish"><div class="dish-info"><span class="tag nonveg"></span><div><div class="dish-name">Chicken</div></div></div><div class="dish-price">₹90</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Between Breads -->
+      <div class="menu-panel" id="breads">
+        <div class="menu-grid">
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Herb &amp; Harvest Sandwich</div>
+                <div class="dish-desc">Cucumber, greens, paneer, lemon juice, spinach, ginger</div>
+              </div>
+            </div>
+            <div class="dish-price">₹150</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag nonveg"></span>
+              <div>
+                <div class="dish-name">Crafted Chicken Sandwich</div>
+                <div class="dish-desc">Onion, chicken, celery, jalapeño, greek yogurt, lemon juice, yellow mustard, garlic powder</div>
+              </div>
+            </div>
+            <div class="dish-price">₹180</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Veg Open Sandwich</div>
+                <div class="dish-desc">Cucumber, greens, paneer, lemon juice, spinach, ginger</div>
+              </div>
+            </div>
+            <div class="dish-price">₹140</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag nonveg"></span>
+              <div>
+                <div class="dish-name">Egg Open Sandwich</div>
+                <div class="dish-desc">Onion, egg, celery, jalapeño, lemon juice, yellow mustard, garlic powder</div>
+              </div>
+            </div>
+            <div class="dish-price">₹150</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag nonveg"></span>
+              <div>
+                <div class="dish-name">Chicken Open Sandwich</div>
+                <div class="dish-desc">Onion, chicken, celery, jalapeño, lemon juice, yellow mustard, garlic powder</div>
+              </div>
+            </div>
+            <div class="dish-price">₹180</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flatbread -->
+      <div class="menu-panel" id="flatbread">
+        <div class="menu-grid">
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Margarita Pizza</div>
+                <div class="dish-desc">Pizza sauce, mozzarella cheese, basil leaves, olive oil</div>
+              </div>
+            </div>
+            <div class="dish-price">₹120</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Veg Garden Pizza</div>
+                <div class="dish-desc">Pizza sauce, onion, mozzarella cheese, sweet corn, mushrooms, tomato, jalapeños, black olives</div>
+              </div>
+            </div>
+            <div class="dish-price">₹180</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag"></span>
+              <div>
+                <div class="dish-name">Paneer Garden Pizza</div>
+                <div class="dish-desc">Pizza sauce, mozzarella cheese, paneer, onion, bell peppers, sweet corn, tomato, jalapeños or black olives</div>
+              </div>
+            </div>
+            <div class="dish-price">₹220</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info">
+              <span class="tag nonveg"></span>
+              <div>
+                <div class="dish-name">Chicken Garden Pizza</div>
+                <div class="dish-desc">Pizza sauce, mozzarella cheese, chicken, onion, bell peppers, sweet corn, mushrooms, jalapeños or black olives</div>
+              </div>
+            </div>
+            <div class="dish-price">₹250</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beverages -->
+      <div class="menu-panel" id="beverages">
+        <div class="menu-grid">
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Hot Coffee</div></div></div><div class="dish-price">₹40</div></div>
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Cold Coffee</div></div></div><div class="dish-price">₹60</div></div>
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Indian Chai</div></div></div><div class="dish-price">₹25</div></div>
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Mint Green Tea</div></div></div><div class="dish-price">₹50</div></div>
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Ginger Turmeric Tea</div></div></div><div class="dish-price">₹50</div></div>
+        </div>
+      </div>
+
+      <!-- Thirst Quenchers -->
+      <div class="menu-panel" id="quenchers">
+        <div class="menu-grid">
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Nimbu Pani</div></div></div><div class="dish-price">₹80</div></div>
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Satu Pani</div></div></div><div class="dish-price">₹80</div></div>
+          <div class="dish"><div class="dish-info"><span class="tag"></span><div><div class="dish-name">Satu Shake</div></div></div><div class="dish-price">₹90</div></div>
+        </div>
+      </div>
+
+      <!-- Santé Blends -->
+      <div class="menu-panel" id="blends">
+        <div class="menu-grid">
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Tropical Boost Smoothie</div>
+                <div class="dish-desc">Orange, banana, papaya, pineapple, beetroot, ginger, amla, oats, honey, wheatgrass powder</div>
+              </div>
+            </div>
+            <div class="dish-price">₹120</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Golden Smoothie</div>
+                <div class="dish-desc">Mango, banana, coconut water, fresh turmeric, lemon juice</div>
+              </div>
+            </div>
+            <div class="dish-price">₹120</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Berry Fiber Smoothie</div>
+                <div class="dish-desc">Guava, blueberry, strawberry, apple, banana, carrot, beetroot, oats, honey, lemon juice</div>
+              </div>
+            </div>
+            <div class="dish-price">₹140</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Citrus Cooler Smoothie</div>
+                <div class="dish-desc">Orange, cucumber, watermelon, dates, papaya, mint leaves, haldi</div>
+              </div>
+            </div>
+            <div class="dish-price">₹120</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Citrus Boost Smoothie</div>
+                <div class="dish-desc">Orange, cucumber, watermelon, dates, papaya, haldi, beetroot, mint leaves</div>
+              </div>
+            </div>
+            <div class="dish-price">₹120</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Berry Rejuvenate Smoothie</div>
+                <div class="dish-desc">Blueberry, strawberry, almond milk, chia seeds, honey</div>
+              </div>
+            </div>
+            <div class="dish-price">₹150</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Ginger Zest Smoothie</div>
+                <div class="dish-desc">Mint leaves, ginger, honey, cinnamon powder, lemon juice, pineapple, orange, amla</div>
+              </div>
+            </div>
+            <div class="dish-price">₹130</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Green Smoothie</div>
+                <div class="dish-desc">Spinach leaves, cucumber, mint leaves, dates, coconut milk, amla</div>
+              </div>
+            </div>
+            <div class="dish-price">₹130</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Berry Bliss Smoothie</div>
+                <div class="dish-desc">Blueberry, strawberry, raspberry, dates, cranberry, banana</div>
+              </div>
+            </div>
+            <div class="dish-price">₹150</div>
+          </div>
+          <div class="dish">
+            <div class="dish-info"><span class="tag"></span>
+              <div>
+                <div class="dish-name">Blue Tropical Smoothie</div>
+                <div class="dish-desc">Blueberry, pineapple, guava, banana, dates, honey, cinnamon powder</div>
+              </div>
+            </div>
+            <div class="dish-price">₹150</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><span class="tag"></span> Veg</span>
+        <span><span class="tag nonveg"></span> Non-veg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBOS -->
+  <section id="combos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Combos</div>
+        <h2>Good food, <span class="script">better</span> together</h2>
+      </div>
+      <div class="combo-grid">
+        <div class="combo-card"><span class="leaf"></span>
+          <h3>Power Greens Combo</h3>
+          <p>Tropical Boost Smoothie + Paneer Vitality Bowl (Regular)</p>
+          <span class="combo-price">at ₹350</span>
+        </div>
+        <div class="combo-card"><span class="leaf"></span>
+          <h3>Sip &amp; Bite Deal</h3>
+          <p>Buy Any Sandwich & Get Hot Coffee Or Cold Coffee</p>
+          <span class="combo-price">at ₹30</span>
+        </div>
+        <div class="combo-card"><span class="leaf"></span>
+          <h3>Pizza &amp; Pani Pair</h3>
+          <p>Buy Any Pizza & Get Nimbu Pani</p>
+          <span class="combo-price">at ₹40</span>
+        </div>
+        <div class="combo-card"><span class="leaf"></span>
+          <h3>Duo Delight</h3>
+          <p>2 Margarita Pizza + 2 Nimbu Pani</p>
+          <span class="combo-price">at ₹350</span>
+        </div>
+        <div class="combo-card"><span class="leaf"></span>
+          <h3>Bowl &amp; Smoothie Duo</h3>
+          <p>2 Chicken Garden Bowl + 2 Golden Smoothies</p>
+          <span class="combo-price">at ₹700</span>
+        </div>
+        <div class="combo-card"><span class="leaf"></span>
+          <h3>Classic Comfort Combo</h3>
+          <p>Herb &amp; Harvest Sandwich + Hot Coffee</p>
+          <span class="combo-price">at ₹160</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>Visit or write to us</h2>
+        <p>Questions, bulk orders or feedback — send us a note and we'll get right back to you.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="info-card">
+          <div class="info-row">
+            <span class="ic">📍</span>
+            <div><h4>Address</h4><p>1, Dwarika Puri, G.M.S Road, Dehradun</p></div>
+          </div>
+          <div class="info-row">
+            <span class="ic">📞</span>
+            <div><h4>Phone</h4><p>+91 9997521408, +91 9084371549</p></div>
+          </div>
+          <div class="info-row">
+            <span class="ic">✉️</span>
+            <div><h4>Email</h4><p>lebowlsante@gmail.com</p></div>
+          </div>
+          <div class="info-row">
+            <span class="ic">🕒</span>
+            <div><h4>Hours</h4><p>12 noon to 10 p.m</p></div>
+          </div>
+          <div class="socials">
+            <a href="https://www.instagram.com/le_bowl_sante/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="https://wa.me/9084371549" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>Send us a message</h3>
+          <p>Fill this in and it'll open a pre-filled email to send us — no account needed.</p>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="field">
+              <label for="reason">Reason for contact</label>
+              <select id="reason" name="reason">
+                <option>General enquiry</option>
+                <option>Bulk / catering order</option>
+                <option>Feedback</option>
+                <option>Careers</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell us how we can help"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send message</button>
+            <p class="form-note"></p>
+            <p class="form-status" id="formStatus"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span>© <span id="year"></span> Le Bowl Santé. All rights reserved.</span>
+    <span>Nourish · Energize · Balance</span>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // menu tabs
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // contact form -> mailto
+  const CAFE_EMAIL = "hello@lebowlsante.example"; // replace with your real inbox
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const email = form.email.value.trim();
+    const reason = form.reason.value;
+    const message = form.message.value.trim();
+
+    if(!name || !email || !message){
+      status.textContent = "Please fill in your name, email and message.";
+      status.className = "form-status show";
+      return;
+    }
+
+    const subject = encodeURIComponent(`[Le Bowl Santé] ${reason} — ${name}`);
+    const body = encodeURIComponent(
+`Name: ${name}
+Phone: ${phone || '—'}
+Email: ${email}
+Reason: ${reason}
+
+`
+    );
+   
+  });
+</script>
+<script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
